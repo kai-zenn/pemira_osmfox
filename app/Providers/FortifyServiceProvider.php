@@ -12,9 +12,12 @@ use Illuminate\Support\Facades\RateLimiter;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Str;
 use Laravel\Fortify\Actions\RedirectIfTwoFactorAuthenticatable;
+use Laravel\Fortify\Contracts\LoginResponse;
 use Laravel\Fortify\Fortify;
+
 use App\Models\User;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Auth;
 
 class FortifyServiceProvider extends ServiceProvider
 {
@@ -37,6 +40,12 @@ class FortifyServiceProvider extends ServiceProvider
         Fortify::resetUserPasswordsUsing(ResetUserPassword::class);
         // Fortify::redirectUserForTwoFactorAuthenticationUsing(RedirectIfTwoFactorAuthenticatable::class);
 
+        Fortify::loginView(function () {
+            return view('auth.login');
+        });
+
+        $this->configureRateLimiting();
+
         Fortify::authenticateUsing(function (Request $request) {
             // validasi input
             $request->validate([
@@ -53,6 +62,26 @@ class FortifyServiceProvider extends ServiceProvider
             }
 
             return null;
+        });
+
+        $this->app->singleton(LoginResponse::class, function () {
+            return new class implements LoginResponse {
+                public function toResponse($request)
+                {
+                    /** @var \App\Models\User $user */
+                    $user = Auth::user();
+
+                    if (!$user) {
+                        return redirect('/auth/login')->withErrors(['nis' => 'NIS anda tidak valid']);
+                    }
+
+                    if ($user->canAccessPanel()) {
+                        return redirect('/admin');
+                    }
+
+                    return redirect('/home');
+                }
+            };
         });
     }
 
