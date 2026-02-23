@@ -3,11 +3,12 @@
 use Illuminate\Support\Facades\Route;
 use resources\pages\auth\login;
 
-Route::get('/', function () {
-    return view('welcome');
-});
+// Route::livewire('/login', 'pages::auth.login')->name('login');
 
-Route::livewire('/login', 'pages::auth.login')->name('auth.login');
+// Route::get('/', function () {
+//     return view('welcome');
+// });
+
 
 // Rute untuk halaman Login
 // Route::get('/login', function () {
@@ -16,7 +17,7 @@ Route::livewire('/login', 'pages::auth.login')->name('auth.login');
 
 // // Contoh rute setelah login sukses (Dashboard)
 // Route::middleware(['auth'])->group(function () {
-//     Route::get('/dashboard', function () {
-//         return view('dashboard');
+//     Route::get('/admin', function () {
+//         return view('admin');
 //     })->name('dashboard');
 // });
