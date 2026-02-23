@@ -31,15 +31,15 @@ new class extends Component
 
         if (Auth::user()->canAccessPanel())
         {
-            return redirect()->intended('/admin');
+            return redirect()->to('/admin');
         }
 
-        return redirect()->intended('/dashboard');
+        return redirect()->to(config('fortify.home', '/admin'));
     }
 
     public function render()
     {
-    return $this->view(['auth.login'])->layout('layouts::app');
+        return $this->view(['auth.login'])->layout('layouts::app');
     }
 };
 ?>
