@@ -4,6 +4,8 @@ namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
 
+use Filament\Models\Contracts\FilamentUser;
+use Filament\Panel;
 use Illuminate\Database\Eloquent\Concerns\HasUuids;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\HasMany;
@@ -16,9 +18,9 @@ use OwenIt\Auditing\Auditable as AuditableTrait;
 use Laravel\Fortify\TwoFactorAuthenticatable;
 use Spatie\Permission\Traits\HasRoles;
 
-class User extends Authenticatable implements Auditable
+class User extends Authenticatable implements Auditable, FilamentUser
 {
-    use hasUuids;
+    use HasUuids;
     use HasRoles;
     use AuditableTrait;
 
@@ -30,10 +32,11 @@ class User extends Authenticatable implements Auditable
      * @var list<string>
      */
 
-    public function canAccesPanel(): bool
+    public function canAccessPanel(Panel $panel): bool
     {
         return $this->hasRole('admin');
     }
+
 
     // Helper untuk memudahkan pengecekan di UI Livewire
     public function canVote(): bool
