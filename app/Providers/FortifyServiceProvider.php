@@ -11,7 +11,6 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\RateLimiter;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Str;
-use Laravel\Fortify\Actions\RedirectIfTwoFactorAuthenticatable;
 use Laravel\Fortify\Contracts\LoginResponse;
 use Laravel\Fortify\Fortify;
 
@@ -26,7 +25,21 @@ class FortifyServiceProvider extends ServiceProvider
      */
     public function register(): void
     {
-        //
+        $this->app->bind(LoginResponse::class, function () {
+            return new class implements LoginResponse {
+                public function toResponse($request)
+                {
+                    /** @var \App\Models\User $user */
+                    $user = Auth::user();
+
+                    if (!$user) {
+                        return redirect('/login')->withErrors(['nis' => 'NIS anda tidak valid']);
+                    }
+
+                    return redirect()->to('/admin');
+                }
+            };
+        });
     }
 
     /**
@@ -63,29 +76,9 @@ class FortifyServiceProvider extends ServiceProvider
 
             return null;
         });
-
-        $this->app->singleton(LoginResponse::class, function () {
-            return new class implements LoginResponse {
-                public function toResponse($request)
-                {
-                    /** @var \App\Models\User $user */
-                    $user = Auth::user();
-
-                    if (!$user) {
-                        return redirect('/auth/login')->withErrors(['nis' => 'NIS anda tidak valid']);
-                    }
-
-                    if ($user->canAccessPanel()) {
-                        return redirect('/admin');
-                    }
-
-                    return redirect('/home');
-                }
-            };
-        });
     }
 
-    public function configureRateLimiting(): void
+    private function configureRateLimiting(): void
     {
         RateLimiter::for('login', function (Request $request) {
             $throttleKey = Str::transliterate(Str::lower($request->input(Fortify::username())).'|'.$request->ip());
