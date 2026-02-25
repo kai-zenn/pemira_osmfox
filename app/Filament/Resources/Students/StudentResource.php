@@ -7,12 +7,15 @@ use App\Filament\Resources\Students\Pages\EditStudent;
 use App\Filament\Resources\Students\Pages\ListStudents;
 use App\Filament\Resources\Students\Schemas\StudentForm;
 use App\Filament\Resources\Students\Tables\StudentsTable;
-use App\Models\Student;
 use BackedEnum;
 use Filament\Resources\Resource;
 use Filament\Schemas\Schema;
 use Filament\Support\Icons\Heroicon;
 use Filament\Tables\Table;
+use Illuminate\Support\Facades\Hash;
+use App\Models\Student;
+use App\Models\User;
+use Filament\Notifications\Notification;
 
 class StudentResource extends Resource
 {
@@ -38,6 +41,29 @@ class StudentResource extends Resource
         return [
             //
         ];
+    }
+
+    protected static function generateAccount(Student $record): void
+    {
+        if ($record->user_id) return;
+
+        $user = User::create([
+            'student_id' => $record->id,
+            'nis' => $record->nis,
+            'password' => Hash::make($record->nis),
+        ]);
+
+        $user->assignRole('student');
+
+        $record->update([
+            'user_id' => $user->id,
+        ]);
+
+        Notification::make()
+            ->title('Akun berhasil dibuat')
+            ->body('Akun untuk siswa ' . $record->name . ' berhasil dibuat dengan password defaultnya adalah NIS siswa')
+            ->success()
+            ->send();
     }
 
     public static function getPages(): array
