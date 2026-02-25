@@ -19,6 +19,7 @@ return new class extends Migration
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
             $table->boolean('is_voted')->default(false);
+            $table->foreignUuid('student_id')->constrained('students');
             $table->rememberToken();
             $table->timestamps();
         });
