@@ -8,10 +8,10 @@ use Illuminate\Database\Eloquent\Relations\HasOne;
 use OwenIt\Auditing\Auditable as AuditableTrait;
 use OwenIt\Auditing\Contracts\Auditable;
 
-class Student extends Model implements Auditable
+class Student extends Model 
 {
     use HasUuids;
-    use AuditableTrait;
+    // use AuditableTrait;
 
     public function user(): HasOne
     {
@@ -25,6 +25,7 @@ class Student extends Model implements Auditable
     protected $fillable = [
         'name',
         'nis',
+        'user_id',
         'kelas',
         'angkatan'
     ];

@@ -19,11 +19,11 @@ use OwenIt\Auditing\Auditable as AuditableTrait;
 use Laravel\Fortify\TwoFactorAuthenticatable;
 use Spatie\Permission\Traits\HasRoles;
 
-class User extends Authenticatable implements Auditable, FilamentUser
+class User extends Authenticatable implements FilamentUser
 {
     use HasUuids;
     use HasRoles;
-    use AuditableTrait;
+    // use AuditableTrait;
 
     /** @use HasFactory<\Database\Factories\UserFactory> */
     use HasFactory, Notifiable, TwoFactorAuthenticatable;
