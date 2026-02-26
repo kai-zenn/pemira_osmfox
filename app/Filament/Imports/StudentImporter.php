@@ -15,24 +15,24 @@ class StudentImporter extends Importer
     public static function getColumns(): array
     {
         return [
+            ImportColumn::make('nis')
+                ->label('NIS')
+                ->requiredMapping()
+                ->integer()
+                ->rules(['required', 'integer']),
             ImportColumn::make('name')
                 ->label('Nama Lengkap')
                 ->requiredMapping()
                 ->rules(['required', 'max:255']),
-            ImportColumn::make('nis')
-                ->label('NIS')
-                ->requiredMapping()
-                ->numeric()
-                ->rules(['required', 'integer']),
             ImportColumn::make('kelas')
                 ->label('Kelas')
                 ->requiredMapping()
-                ->numeric()
+                ->integer()
                 ->rules(['required', 'integer']),
             ImportColumn::make('angkatan')
                 ->label('Angkatan')
                 ->requiredMapping()
-                ->numeric()
+                ->integer()
                 ->rules(['required', 'integer']),
         ];
     }
