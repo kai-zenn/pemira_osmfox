@@ -43,6 +43,25 @@ class StudentsTable
             ])
             ->recordActions([
                 EditAction::make(),
+                Action::make('generate_account')
+                    ->label('Buat Akun')
+                    ->icon('heroicon-o-user-plus')
+                    ->color('success')
+                    ->visible(fn (Student $record) => $record->user_id === null)
+                    ->action(function (Student $record) {
+                        // mengubah password menjadi hexadecimal random
+                        $password = Hash::make($record->nis); // menggunakan nis sebagai password default
+
+                        // Create a new user account for the student
+                        $user = $record->user()->create([
+                            'name' => $record->name,
+                            'email' => $record->nis . '@example.com', // menggunakan nis murid sebagai default alamat email
+                            'password' => Hash::make($password),
+                        ]);
+
+                        // Show a success message with the generated password
+                        Action::message("Akun berhasil dibuat! Email: {$user->email}, Password: {$password}");
+                    })
                 ])
             ->toolbarActions([
                 BulkActionGroup::make([
