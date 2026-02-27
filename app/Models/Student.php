@@ -4,18 +4,19 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Concerns\HasUuids;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasOne;
 use OwenIt\Auditing\Auditable as AuditableTrait;
 use OwenIt\Auditing\Contracts\Auditable;
 
-class Student extends Model 
+class Student extends Model
 {
     use HasUuids;
     // use AuditableTrait;
 
     public function user(): HasOne
     {
-        return $this->hasOne(User::class, 'user_id');
+        return $this->hasOne(User::class, 'student_id', 'id');
     }
 
     protected $table = 'students';
@@ -25,7 +26,7 @@ class Student extends Model
     protected $fillable = [
         'name',
         'nis',
-        'user_id',
+        // 'user_id',
         'kelas',
         'angkatan'
     ];

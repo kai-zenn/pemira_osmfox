@@ -10,6 +10,7 @@ use Illuminate\Database\Eloquent\Concerns\HasUuids;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Support\Str;
@@ -47,7 +48,7 @@ class User extends Authenticatable implements FilamentUser
 
     public function student(): BelongsTo
     {
-        return $this->belongsTo(Student::class, 'student_id');
+        return $this->belongsTo(Student::class, 'student_id', 'id');
     }
 
     protected $table = 'users';
@@ -57,6 +58,7 @@ class User extends Authenticatable implements FilamentUser
     protected $fillable = [
         'name',
         'nis',
+        'student_id',
         'email',
         'password',
     ];
