@@ -16,6 +16,7 @@ return new class extends Migration
             $table->integer('nis')->unique();
             $table->string('name');
             $table->integer('kelas');
+            // $table->foreignUuid('user_id')->constrained('users');
             $table->integer('angkatan');
             $table->timestamps();
         });

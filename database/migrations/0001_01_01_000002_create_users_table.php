@@ -14,12 +14,12 @@ return new class extends Migration
         Schema::create('users', function (Blueprint $table) {
             $table->uuid('id')->primary();
             $table->string('name');
+            $table->foreignUuid('student_id')->nullable()->constrained('students')->nullOnDelete();
             $table->integer('nis')->unique();
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
             $table->boolean('is_voted')->default(false);
-            $table->foreignUuid('student_id')->constrained('students');
             $table->rememberToken();
             $table->timestamps();
         });
