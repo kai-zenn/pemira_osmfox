@@ -43,29 +43,6 @@ class StudentResource extends Resource
         ];
     }
 
-    protected static function generateAccount(Student $record): void
-    {
-        if ($record->user_id) return;
-
-        $user = User::create([
-            'student_id' => $record->id,
-            'nis' => $record->nis,
-            'password' => Hash::make($record->nis),
-        ]);
-
-        $user->assignRole('student');
-
-        $record->update([
-            'user_id' => $user->id,
-        ]);
-
-        Notification::make()
-            ->title('Akun berhasil dibuat')
-            ->body('Akun untuk siswa ' . $record->name . ' berhasil dibuat dengan password defaultnya adalah NIS siswa')
-            ->success()
-            ->send();
-    }
-
     public static function getPages(): array
     {
         return [
