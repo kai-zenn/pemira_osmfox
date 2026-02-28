@@ -12,10 +12,11 @@ use Filament\Tables\Filters\SelectFilter;
 use Filament\Tables\Filters\Filter;
 use Filament\Tables\Table;
 use Filament\Actions\Action;
+use Filament\Notifications\Notification;
 
 use App\Models\Student;
+use App\Models\User;
 use Illuminate\Support\Facades\Hash;
-use Filament\Forms\Components\TextInput;
 use Illuminate\Database\Eloquent\Builder;
 
 use function Laravel\Prompts\text;
@@ -49,18 +50,27 @@ class StudentsTable
                     ->color('success')
                     ->visible(fn (Student $record) => $record->user_id === null)
                     ->action(function (Student $record) {
-                        // mengubah password menjadi hexadecimal random
-                        $password = Hash::make($record->nis); // menggunakan nis sebagai password default
+                        if ($record->user_id) return;
 
-                        // Create a new user account for the student
-                        $user = $record->user()->create([
+                        $user = User::create([
                             'name' => $record->name,
-                            'email' => $record->nis . '@example.com', // menggunakan nis murid sebagai default alamat email
-                            'password' => Hash::make($password),
+                            'nis' => $record->nis,
+                            'student_id' => $record->id,
+                            'email' => $record->nis . '@email.com',
+                            'password' => Hash::make($record->nis),
                         ]);
 
-                        // Show a success message with the generated password
-                        Action::message("Akun berhasil dibuat! Email: {$user->email}, Password: {$password}");
+                        $user->assignRole('voter');
+
+                        $record->update([
+                            'user_id' => $user->id,
+                        ]);
+
+                        Notification::make()
+                            ->title('Akun berhasil dibuat')
+                            ->body('Akun untuk siswa ' . $record->name . ' berhasil dibuat dengan password defaultnya adalah NIS siswa')
+                            ->success()
+                            ->send();
                     })
                 ])
             ->toolbarActions([
