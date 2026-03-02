@@ -55,7 +55,7 @@ new #[Layout('layouts::app')] #[Title('VOX46 — Pemilihan OSIS SMK Negeri 46 Ja
         </div>
 
         {{-- Navbar --}}
-        <x-navbar />
+        <livewire:ui.navbar />
 
         {{-- Hero Content --}}
         <div class="relative z-10 max-w-7xl mx-auto px-6 sm:px-10 lg:px-16
@@ -278,18 +278,6 @@ new #[Layout('layouts::app')] #[Title('VOX46 — Pemilihan OSIS SMK Negeri 46 Ja
                     </div>
                 </article>
                 @endforeach
-            </div>
-
-            {{-- View all link --}}
-            <div class="mt-10 text-center">
-                <a href="#"
-                class="inline-flex items-center gap-2 text-sm font-semibold
-                        text-main border-b border-main pb-0.5
-                        hover:text-sec hover:border-sec
-                        transition-colors duration-200">
-                    Lihat Semua Artikel
-                    <i class="fa-solid fa-arrow-right text-xs"></i>
-                </a>
             </div>
         </div>
     </section>
