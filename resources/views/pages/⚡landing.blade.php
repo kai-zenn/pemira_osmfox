@@ -47,7 +47,7 @@ new #[Layout('layouts::app')] #[Title('VOX46 — Pemilihan OSIS SMK Negeri 46 Ja
 
 <div class="relative min-h-screen overflow-hidden">
 
-    <section class="hero-section relative min-h-screen bg-[#2D336B] overflow-hidden" aria-label="Hero">
+    <section class="hero-section relative min-h-screen bg-main overflow-hidden" aria-label="Hero">
 
         {{-- Subtle diagonal line texture — tidak mencolok --}}
         <div class="absolute inset-0 pointer-events-none"
@@ -67,7 +67,7 @@ new #[Layout('layouts::app')] #[Title('VOX46 — Pemilihan OSIS SMK Negeri 46 Ja
                 <div class="space-y-7">
 
                     {{-- Periode badge --}}
-                    <div class="inline-flex items-center gap-2.5 border border-[#7886C7]/50
+                    <div class="inline-flex items-center gap-2.5 border border-sec/50
                                 px-4 py-1.5 text-xs font-semibold tracking-[0.15em] uppercase
                                 text-[#A9B5DF]">
                         <span class="w-1.5 h-1.5 rounded-full bg-[#A9B5DF] animate-pulse"></span>
@@ -93,7 +93,7 @@ new #[Layout('layouts::app')] #[Title('VOX46 — Pemilihan OSIS SMK Negeri 46 Ja
                     <div class="flex items-center gap-5 flex-wrap pt-1">
                         <a href="/login"
                         wire:navigate
-                        class="inline-flex items-center gap-3 bg-white text-[#2D336B]
+                        class="inline-flex items-center gap-3 bg-white text-main
                                 px-7 py-3.5 font-bold text-sm
                                 hover:bg-[#A9B5DF] transition-colors duration-200">
                             Mulai Memilih
@@ -111,17 +111,17 @@ new #[Layout('layouts::app')] #[Title('VOX46 — Pemilihan OSIS SMK Negeri 46 Ja
                     <div class="flex items-center gap-10 pt-6 border-t border-white/10">
                         <div>
                             <p class="text-3xl font-black text-white tracking-tight">850+</p>
-                            <p class="text-xs text-[#7886C7] mt-1 font-medium">Pemilih Terdaftar</p>
+                            <p class="text-xs text-sec mt-1 font-medium">Pemilih Terdaftar</p>
                         </div>
                         <div class="w-px h-10 bg-white/10"></div>
                         <div>
                             <p class="text-3xl font-black text-white tracking-tight">3</p>
-                            <p class="text-xs text-[#7886C7] mt-1 font-medium">Paslon</p>
+                            <p class="text-xs text-sec mt-1 font-medium">Paslon</p>
                         </div>
                         <div class="w-px h-10 bg-white/10"></div>
                         <div>
                             <p class="text-3xl font-black text-white tracking-tight">7 Hari</p>
-                            <p class="text-xs text-[#7886C7] mt-1 font-medium">Tersisa</p>
+                            <p class="text-xs text-sec mt-1 font-medium">Tersisa</p>
                         </div>
                     </div>
                 </div>
@@ -133,7 +133,7 @@ new #[Layout('layouts::app')] #[Title('VOX46 — Pemilihan OSIS SMK Negeri 46 Ja
                         {{-- Card header --}}
                         <div class="flex items-start justify-between">
                             <div>
-                                <p class="text-[10px] font-bold tracking-[0.18em] uppercase text-[#7886C7]">
+                                <p class="text-[10px] font-bold tracking-[0.18em] uppercase text-sec">
                                     Pemilihan Aktif
                                 </p>
                                 <p class="text-white/40 text-xs mt-1">Data diperbarui secara realtime</p>
@@ -151,7 +151,7 @@ new #[Layout('layouts::app')] #[Title('VOX46 — Pemilihan OSIS SMK Negeri 46 Ja
                         <div class="space-y-5">
                             @foreach ($candidates as $index => $candidate)
                             <div class="flex items-center gap-4">
-                                <div class="w-9 h-9 bg-[#2D336B] border border-[#7886C7]/30
+                                <div class="w-9 h-9 bg-main border border-sec/30
                                             flex items-center justify-center
                                             text-[10px] font-black text-[#A9B5DF] shrink-0">
                                     {{ $candidate['no'] }}
@@ -166,7 +166,7 @@ new #[Layout('layouts::app')] #[Title('VOX46 — Pemilihan OSIS SMK Negeri 46 Ja
                                         </span>
                                     </div>
                                     <div class="h-1 w-full bg-white/8">
-                                        <div class="h-full bg-[#7886C7] transition-all duration-700"
+                                        <div class="h-full bg-sec transition-all duration-700"
                                             style="width: {{ $candidate['votes'] }}%"></div>
                                     </div>
                                 </div>
@@ -178,8 +178,8 @@ new #[Layout('layouts::app')] #[Title('VOX46 — Pemilihan OSIS SMK Negeri 46 Ja
                         <div class="border-t border-white/8 pt-4">
                             <a href="/login" wire:navigate
                             class="flex items-center justify-center gap-2 w-full
-                                    border border-[#7886C7]/40 py-2.5 text-xs
-                                    font-semibold text-[#A9B5DF] hover:bg-[#7886C7]/10
+                                    border border-sec/40 py-2.5 text-xs
+                                    font-semibold text-[#A9B5DF] hover:bg-sec/10
                                     transition-colors duration-200">
                                 <i class="fa-solid fa-lock-open text-[10px]"></i>
                                 Login untuk Memberikan Suara
@@ -200,28 +200,28 @@ new #[Layout('layouts::app')] #[Title('VOX46 — Pemilihan OSIS SMK Negeri 46 Ja
             {{-- Section header --}}
             <header class="flex items-end justify-between mb-12">
                 <div class="space-y-2">
-                    <p class="text-[10px] font-bold tracking-[0.18em] uppercase text-[#7886C7]">
+                    <p class="text-[10px] font-bold tracking-[0.18em] uppercase text-sec">
                         — Artikel
                     </p>
-                    <h2 class="text-3xl sm:text-4xl font-black text-[#0A0A0A] leading-tight max-w-sm"
+                    <h2 class="text-3xl sm:text-4xl font-black text-blk leading-tight max-w-sm"
                         style="font-family: 'Playfair Display', serif;">
                         Informasi &amp; <br>Berita Terkini
-                        <span class="inline-block w-8 h-0.5 bg-[#2D336B] ml-3 mb-1.5 align-middle"></span>
+                        <span class="inline-block w-8 h-0.5 bg-main ml-3 mb-1.5 align-middle"></span>
                     </h2>
                 </div>
 
                 {{-- Navigation arrows --}}
                 <div class="hidden sm:flex items-center gap-2">
                     <button type="button"
-                            class="w-10 h-10 border border-[#2D336B]/20 flex items-center justify-center
-                                text-[#2D336B]/40 hover:border-[#2D336B] hover:text-[#2D336B]
+                            class="w-10 h-10 border border-main/20 flex items-center justify-center
+                                text-main/40 hover:border-main hover:text-main
                                 transition-colors duration-200"
                             aria-label="Artikel sebelumnya">
                         <i class="fa-solid fa-arrow-left text-sm"></i>
                     </button>
                     <button type="button"
-                            class="w-10 h-10 bg-[#2D336B] flex items-center justify-center
-                                text-white hover:bg-[#7886C7]
+                            class="w-10 h-10 bg-main flex items-center justify-center
+                                text-white hover:bg-sec
                                 transition-colors duration-200"
                             aria-label="Artikel berikutnya">
                         <i class="fa-solid fa-arrow-right text-sm"></i>
@@ -232,11 +232,11 @@ new #[Layout('layouts::app')] #[Title('VOX46 — Pemilihan OSIS SMK Negeri 46 Ja
             {{-- Article cards grid --}}
             <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
                 @foreach ($articles as $article)
-                <article class="group flex flex-col border border-[#0A0A0A]/8
-                                hover:border-[#2D336B]/30 transition-colors duration-200">
+                <article class="group flex flex-col border border-blk/8
+                                hover:border-main/30 transition-colors duration-200">
 
                     {{-- Article image placeholder --}}
-                    <div class="aspect-[16/9] bg-[#f0f2f8] overflow-hidden">
+                    <div class="aspect-video bg-[#f0f2f8] overflow-hidden">
                         @if ($article['image'])
                             <img src="{{ $article['image'] }}"
                                 alt="{{ $article['title'] }}"
@@ -244,7 +244,7 @@ new #[Layout('layouts::app')] #[Title('VOX46 — Pemilihan OSIS SMK Negeri 46 Ja
                                         group-hover:scale-[1.03] transition-transform duration-500">
                         @else
                             <div class="w-full h-full flex items-center justify-center">
-                                <i class="fa-regular fa-image text-3xl text-[#2D336B]/20"></i>
+                                <i class="fa-regular fa-image text-3xl text-main/20"></i>
                             </div>
                         @endif
                     </div>
@@ -253,24 +253,24 @@ new #[Layout('layouts::app')] #[Title('VOX46 — Pemilihan OSIS SMK Negeri 46 Ja
                     <div class="flex flex-col flex-1 p-6 space-y-3">
                         <div class="flex items-center justify-between">
                             <span class="text-[10px] font-bold tracking-widest uppercase
-                                        text-[#7886C7]">
+                                        text-sec">
                                 {{ $article['category'] }}
                             </span>
-                            <time class="text-xs text-[#0A0A0A]/40">{{ $article['date'] }}</time>
+                            <time class="text-xs text-blk/40">{{ $article['date'] }}</time>
                         </div>
 
-                        <h3 class="font-bold text-[#0A0A0A] text-base leading-snug
-                                group-hover:text-[#2D336B] transition-colors duration-200">
+                        <h3 class="font-bold text-blk text-base leading-snug
+                                group-hover:text-main transition-colors duration-200">
                             {{ $article['title'] }}
                         </h3>
 
-                        <p class="text-sm text-[#0A0A0A]/55 leading-relaxed flex-1">
+                        <p class="text-sm text-main/55 leading-relaxed flex-1">
                             {{ $article['excerpt'] }}
                         </p>
 
                         <a href="#"
                         class="inline-flex items-center gap-2 text-xs font-bold
-                                text-[#2D336B] hover:text-[#7886C7]
+                                text-main hover:text-sec
                                 transition-colors duration-200 mt-auto pt-2">
                             Baca Selengkapnya
                             <i class="fa-solid fa-arrow-right text-[10px]"></i>
@@ -284,8 +284,8 @@ new #[Layout('layouts::app')] #[Title('VOX46 — Pemilihan OSIS SMK Negeri 46 Ja
             <div class="mt-10 text-center">
                 <a href="#"
                 class="inline-flex items-center gap-2 text-sm font-semibold
-                        text-[#2D336B] border-b border-[#2D336B] pb-0.5
-                        hover:text-[#7886C7] hover:border-[#7886C7]
+                        text-main border-b border-main pb-0.5
+                        hover:text-sec hover:border-sec
                         transition-colors duration-200">
                     Lihat Semua Artikel
                     <i class="fa-solid fa-arrow-right text-xs"></i>
@@ -296,7 +296,7 @@ new #[Layout('layouts::app')] #[Title('VOX46 — Pemilihan OSIS SMK Negeri 46 Ja
 
 
     {{-- SECTION 3: KEUNGGULAN (Stats / Why) --}}
-    <section class="bg-[#0A0A0A] py-20 px-6 sm:px-10 lg:px-16" aria-label="Keunggulan sistem">
+    <section class="bg-blk py-20 px-6 sm:px-10 lg:px-16" aria-label="Keunggulan sistem">
         <div class="max-w-7xl mx-auto space-y-16">
 
             {{-- Section header: headline kiri + desc kanan (layout img5) --}}
@@ -304,7 +304,7 @@ new #[Layout('layouts::app')] #[Title('VOX46 — Pemilihan OSIS SMK Negeri 46 Ja
                 <h2 class="text-3xl sm:text-4xl lg:text-5xl font-black text-white leading-tight"
                     style="font-family: 'Playfair Display', serif;">
                     Mengapa Menggunakan
-                    <span class="text-[#7886C7]">VOX46?</span>
+                    <span class="text-sec">VOX46?</span>
                 </h2>
                 <p class="text-white/45 text-base leading-relaxed max-w-md lg:ml-auto">
                     VOX46 dirancang khusus untuk pemilihan OSIS SMK Negeri 46 Jakarta —
@@ -318,11 +318,11 @@ new #[Layout('layouts::app')] #[Title('VOX46 — Pemilihan OSIS SMK Negeri 46 Ja
 
                 {{-- Card 1 --}}
                 <div class="border border-white/8 p-8 space-y-6 group
-                            hover:border-[#7886C7]/40 transition-colors duration-200">
+                            hover:border-sec/40 transition-colors duration-200">
                     <div class="flex items-start justify-between">
                         <p class="text-4xl font-black text-white">100%</p>
                         <div class="w-8 h-8 border border-white/15 flex items-center justify-center
-                                    group-hover:border-[#7886C7]/50 transition-colors duration-200">
+                                    group-hover:border-sec/50 transition-colors duration-200">
                             <i class="fa-solid fa-arrow-up-right text-xs text-white/40"></i>
                         </div>
                     </div>
@@ -336,16 +336,16 @@ new #[Layout('layouts::app')] #[Title('VOX46 — Pemilihan OSIS SMK Negeri 46 Ja
                     {{-- Mini bar chart visual (dekoratif, bukan data real) --}}
                     <div class="flex items-end gap-1 h-10">
                         @foreach ([30, 50, 40, 65, 55, 80, 70, 100] as $h)
-                        <div class="flex-1 bg-[#2D336B]" style="height: {{ $h }}%"></div>
+                        <div class="flex-1 bg-main" style="height: {{ $h }}%"></div>
                         @endforeach
                     </div>
                 </div>
 
                 {{-- Card 2 — HIGHLIGHTED (tengah, bg lebih terang) --}}
-                <div class="bg-[#2D336B] p-8 space-y-6 relative">
+                <div class="bg-main p-8 space-y-6 relative">
                     <div class="flex items-start justify-between">
                         <p class="text-4xl font-black text-white">1 : 1</p>
-                        <div class="w-8 h-8 border border-[#7886C7]/40 flex items-center justify-center">
+                        <div class="w-8 h-8 border border-sec/40 flex items-center justify-center">
                             <i class="fa-solid fa-arrow-up-right text-xs text-[#A9B5DF]"></i>
                         </div>
                     </div>
@@ -359,12 +359,12 @@ new #[Layout('layouts::app')] #[Title('VOX46 — Pemilihan OSIS SMK Negeri 46 Ja
                     {{-- Icon dekoratif --}}
                     <div class="flex items-center justify-center h-10">
                         <div class="flex gap-3">
-                            <div class="w-6 h-6 bg-[#7886C7] flex items-center justify-center">
+                            <div class="w-6 h-6 bg-sec flex items-center justify-center">
                                 <i class="fa-solid fa-user text-[10px] text-white"></i>
                             </div>
-                            <div class="w-px h-6 bg-[#7886C7]/40 self-stretch"></div>
-                            <div class="w-6 h-6 border border-[#7886C7]/40 flex items-center justify-center">
-                                <i class="fa-solid fa-check text-[10px] text-[#A9B5DF]"></i>
+                            <div class="w-px h-6 bg-sec/40 self-stretch"></div>
+                            <div class="w-6 h-6 border border-sec/40 flex items-center justify-center">
+                                <i class="fa-solid fa-check text-[10px] text-sec"></i>
                             </div>
                         </div>
                     </div>
@@ -372,11 +372,11 @@ new #[Layout('layouts::app')] #[Title('VOX46 — Pemilihan OSIS SMK Negeri 46 Ja
 
                 {{-- Card 3 --}}
                 <div class="border border-white/8 p-8 space-y-6 group
-                            hover:border-[#7886C7]/40 transition-colors duration-200">
+                            hover:border-sec/40 transition-colors duration-200">
                     <div class="flex items-start justify-between">
                         <p class="text-4xl font-black text-white">∞</p>
                         <div class="w-8 h-8 border border-white/15 flex items-center justify-center
-                                    group-hover:border-[#7886C7]/50 transition-colors duration-200">
+                                    group-hover:border-sec/50 transition-colors duration-200">
                             <i class="fa-solid fa-arrow-up-right text-xs text-white/40"></i>
                         </div>
                     </div>
@@ -390,7 +390,7 @@ new #[Layout('layouts::app')] #[Title('VOX46 — Pemilihan OSIS SMK Negeri 46 Ja
                     {{-- Mini visual dekoratif --}}
                     <div class="flex items-end gap-1 h-10">
                         @foreach ([100, 80, 95, 70, 90, 60, 85, 75] as $h)
-                        <div class="flex-1 bg-[#2D336B]" style="height: {{ $h }}%"></div>
+                        <div class="flex-1 bg-main" style="height: {{ $h }}%"></div>
                         @endforeach
                     </div>
                 </div>
@@ -407,19 +407,19 @@ new #[Layout('layouts::app')] #[Title('VOX46 — Pemilihan OSIS SMK Negeri 46 Ja
                 {{-- ── Kiri: Heading + Accordion list ── --}}
                 <div class="space-y-10">
                     <header class="space-y-4">
-                        <h2 class="text-3xl sm:text-4xl font-black text-[#0A0A0A] leading-tight"
+                        <h2 class="text-3xl sm:text-4xl font-black text-blk leading-tight"
                             style="font-family: 'Playfair Display', serif;">
-                            Fitur &amp; <span class="text-[#2D336B]">Kemampuan</span>
+                            Fitur &amp; <span class="text-main">Kemampuan</span>
                             <br>VOX46
                         </h2>
-                        <p class="text-[#0A0A0A]/50 text-sm leading-relaxed max-w-sm">
+                        <p class="text-blk/50 text-sm leading-relaxed max-w-sm">
                             Platform pemilihan OSIS digital yang dirancang untuk kebutuhan
                             nyata administrasi sekolah.
                         </p>
                     </header>
 
                     {{-- Accordion-style feature list (layout dari img6 kiri) --}}
-                    <nav class="space-y-0 border-t border-[#0A0A0A]/8" aria-label="Daftar fitur">
+                    <nav class="space-y-0 border-t border-blk/8" aria-label="Daftar fitur">
                         @foreach([
                             ['icon' => 'fa-shield-halved', 'label' => 'Autentikasi NIS Siswa', 'active' => true],
                             ['icon' => 'fa-bolt',           'label' => 'Hasil Realtime',         'active' => false],
@@ -427,12 +427,12 @@ new #[Layout('layouts::app')] #[Title('VOX46 — Pemilihan OSIS SMK Negeri 46 Ja
                             ['icon' => 'fa-rotate',         'label' => 'Manajemen Periode',      'active' => false],
                             ['icon' => 'fa-chart-simple',   'label' => 'Dasbor Admin',           'active' => false],
                         ] as $item)
-                        <div class="flex items-center gap-4 py-4 border-b border-[#0A0A0A]/8
+                        <div class="flex items-center gap-4 py-4 border-b border-blk/8
                                     cursor-pointer group
-                                    {{ $item['active'] ? 'text-[#2D336B]' : 'text-[#0A0A0A]/40 hover:text-[#2D336B]' }}
+                                    {{ $item['active'] ? 'text-main' : 'text-blk/40 hover:text-main' }}
                                     transition-colors duration-200">
                             <i class="fa-solid {{ $item['icon'] }} text-sm w-4 text-center
-                                    {{ $item['active'] ? 'text-[#2D336B]' : '' }}"></i>
+                                    {{ $item['active'] ? 'text-main' : '' }}"></i>
                             <span class="flex-1 text-sm font-{{ $item['active'] ? 'bold' : 'medium' }}">
                                 {{ $item['label'] }}
                             </span>
@@ -448,27 +448,27 @@ new #[Layout('layouts::app')] #[Title('VOX46 — Pemilihan OSIS SMK Negeri 46 Ja
                 <div class="grid grid-cols-2 gap-4 content-start">
 
                     {{-- Card 1 —— Normal --}}
-                    <article class="bg-white border border-[#0A0A0A]/8 p-6 space-y-4
-                                    hover:border-[#2D336B]/30 transition-colors duration-200 group">
+                    <article class="bg-white border border-blk/8 p-6 space-y-4
+                                    hover:border-main/30 transition-colors duration-200 group">
                         <div class="w-9 h-9 bg-[#f0f2f8] flex items-center justify-center
-                                    group-hover:bg-[#2D336B]/10 transition-colors duration-200">
-                            <i class="fa-solid fa-shield-halved text-sm text-[#2D336B]"></i>
+                                    group-hover:bg-main/10 transition-colors duration-200">
+                            <i class="fa-solid fa-shield-halved text-sm text-main"></i>
                         </div>
                         <div class="space-y-2">
-                            <h3 class="text-sm font-bold text-[#0A0A0A]">Autentikasi NIS</h3>
-                            <p class="text-xs text-[#0A0A0A]/50 leading-relaxed">
+                            <h3 class="text-sm font-bold text-blk">Autentikasi NIS</h3>
+                            <p class="text-xs text-blk/50 leading-relaxed">
                                 Login menggunakan NIS dan password. Hanya siswa terdaftar yang
                                 dapat mengakses sistem pemilihan.
                             </p>
                         </div>
                         <a href="#" class="inline-flex items-center gap-1.5 text-xs font-bold
-                                        text-[#2D336B] hover:text-[#7886C7] transition-colors duration-200">
+                                        text-main hover:text-sec transition-colors duration-200">
                             Pelajari <i class="fa-solid fa-arrow-right text-[10px]"></i>
                         </a>
                     </article>
 
                     {{-- Card 2 — HIGHLIGHTED (dark) --}}
-                    <article class="bg-[#2D336B] p-6 space-y-4 group">
+                    <article class="bg-main p-6 space-y-4 group">
                         <div class="w-9 h-9 bg-white/10 flex items-center justify-center">
                             <i class="fa-solid fa-bolt text-sm text-[#A9B5DF]"></i>
                         </div>
@@ -486,41 +486,41 @@ new #[Layout('layouts::app')] #[Title('VOX46 — Pemilihan OSIS SMK Negeri 46 Ja
                     </article>
 
                     {{-- Card 3 — Normal --}}
-                    <article class="bg-white border border-[#0A0A0A]/8 p-6 space-y-4
-                                    hover:border-[#2D336B]/30 transition-colors duration-200 group">
+                    <article class="bg-white border border-blk/8 p-6 space-y-4
+                                    hover:border-main/30 transition-colors duration-200 group">
                         <div class="w-9 h-9 bg-[#f0f2f8] flex items-center justify-center
-                                    group-hover:bg-[#2D336B]/10 transition-colors duration-200">
-                            <i class="fa-solid fa-file-arrow-up text-sm text-[#2D336B]"></i>
+                                    group-hover:bg-main/10 transition-colors duration-200">
+                            <i class="fa-solid fa-file-arrow-up text-sm text-main"></i>
                         </div>
                         <div class="space-y-2">
-                            <h3 class="text-sm font-bold text-[#0A0A0A]">Import Excel</h3>
-                            <p class="text-xs text-[#0A0A0A]/50 leading-relaxed">
+                            <h3 class="text-sm font-bold text-blk">Import Excel</h3>
+                            <p class="text-xs text-blk/50 leading-relaxed">
                                 Admin dapat mengimpor data siswa langsung dari file Excel
                                 yang diberikan oleh TU sekolah.
                             </p>
                         </div>
                         <a href="#" class="inline-flex items-center gap-1.5 text-xs font-bold
-                                        text-[#2D336B] hover:text-[#7886C7] transition-colors duration-200">
+                                        text-main hover:text-sec transition-colors duration-200">
                             Pelajari <i class="fa-solid fa-arrow-right text-[10px]"></i>
                         </a>
                     </article>
 
                     {{-- Card 4 — Normal --}}
-                    <article class="bg-white border border-[#0A0A0A]/8 p-6 space-y-4
-                                    hover:border-[#2D336B]/30 transition-colors duration-200 group">
+                    <article class="bg-white border border-blk/8 p-6 space-y-4
+                                    hover:border-main/30 transition-colors duration-200 group">
                         <div class="w-9 h-9 bg-[#f0f2f8] flex items-center justify-center
-                                    group-hover:bg-[#2D336B]/10 transition-colors duration-200">
-                            <i class="fa-solid fa-rotate text-sm text-[#2D336B]"></i>
+                                    group-hover:bg-main/10 transition-colors duration-200">
+                            <i class="fa-solid fa-rotate text-sm text-main"></i>
                         </div>
                         <div class="space-y-2">
-                            <h3 class="text-sm font-bold text-[#0A0A0A]">Multi-Periode</h3>
-                            <p class="text-xs text-[#0A0A0A]/50 leading-relaxed">
+                            <h3 class="text-sm font-bold text-blk">Multi-Periode</h3>
+                            <p class="text-xs text-blk/50 leading-relaxed">
                                 Pemilihan dapat diulang setiap tahun ajaran baru. Siswa
                                 yang naik kelas mendapat hak suara baru.
                             </p>
                         </div>
                         <a href="#" class="inline-flex items-center gap-1.5 text-xs font-bold
-                                        text-[#2D336B] hover:text-[#7886C7] transition-colors duration-200">
+                                        text-main hover:text-sec transition-colors duration-200">
                             Pelajari <i class="fa-solid fa-arrow-right text-[10px]"></i>
                         </a>
                     </article>
