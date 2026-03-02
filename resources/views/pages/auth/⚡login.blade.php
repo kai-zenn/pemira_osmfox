@@ -62,11 +62,9 @@ new class extends Component
     <div class="flex w-full flex-col justify-center bg-[#424A53] px-8 sm:px-12 lg:w-[450px]">
         <div class="mx-auto w-full max-w-xs">
             <div class="mb-12 flex justify-center">
-                <div class="flex h-16 w-20 items-center justify-center bg-[#e2e8f0]">
-                    <svg class="h-8 w-8 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"></path>
-                    </svg>
-                </div>
+                <a href="/" wire:navigate class="flex items-center justify-center">
+                    <img src="{{ asset('log46.png')}}" alt="Logo" class="w-35 h-35">
+                </a>
             </div>
 
             <form method="POST" action="{{ route('login.store') }}" class="space-y-4">
