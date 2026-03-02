@@ -35,8 +35,19 @@ class FortifyServiceProvider extends ServiceProvider
                     if (!$user) {
                         return redirect('/login')->withErrors(['nis' => 'NIS anda tidak valid']);
                     }
+                    
+                    // Admin → Filament panel
+                    if ($user->hasRole('admin')) {
+                        return redirect()->to('/admin');
+                    }
 
-                    return redirect()->to('/admin');
+                    // Voter → halaman utama voter
+                    if ($user->hasRole('voter')) {
+                        return redirect()->to('/home');
+                    }
+
+                    // Fallback — kalau tidak punya role apapun
+                    return redirect('/login')->withErrors(['nis' => 'Akun anda belum memiliki akses.']);
                 }
             };
         });
