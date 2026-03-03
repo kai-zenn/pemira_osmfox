@@ -38,9 +38,9 @@ new #[Layout('layouts::app')] #[Title('VOX46 — Pemilihan OSIS SMK Negeri 46 Ja
      * nanti klo udah dikembangin fiturnya
      */
     public array $candidates = [
-        ['no' => '01', 'name' => 'Pasangan Calon 1', 'votes' => 42],
-        ['no' => '02', 'name' => 'Pasangan Calon 2', 'votes' => 35],
-        ['no' => '03', 'name' => 'Pasangan Calon 3', 'votes' => 23],
+        ['no' => '01', 'name' => 'Atallah Putri', 'votes' => 42],
+        ['no' => '02', 'name' => 'Fahri Akbar', 'votes' => 35],
+        ['no' => '03', 'name' => 'Rasya', 'votes' => 23],
     ];
 };
 ?>
