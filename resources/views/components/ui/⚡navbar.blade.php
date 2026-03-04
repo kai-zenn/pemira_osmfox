@@ -1,12 +1,16 @@
 <?php
 
 use Livewire\Component;
+use Illuminate\Support\Facades\Auth;
 
 new class extends Component
 {
     public function logout()
     {
         Auth::logout();
+        session()->invalidate();
+        session()->regenerateToken();
+        $this->redirect('/', navigate: true);
     }
 };
 ?>
@@ -14,7 +18,7 @@ new class extends Component
 <nav class="absolute top-0 left-0 right-0 z-50 px-6 py-5 flex items-center justify-between">
     <! -- konten navbar akan berubah saat user ter otorisasi-->
     @auth
-        <a href="/home" wire:navigate class="flex items-center gap-2 group pl-3.5">
+        <a href="/home" wire:navigate class="flex items-center gap-2 group pl-3.5 justify-center">
             <div class="flex items-center justify-center">
                 <img src="{{ asset('log46.png')}}" alt="Logo" class="items-center justify-center w-10 h-11 pb-1.5">
             </div>
@@ -22,11 +26,11 @@ new class extends Component
                 VOX46.io
             </span>
         </a>
-        <li class="flext items-center justify-center gap-5">
-           <a href="/home" wire:navigate class="text-bone/10 px-3 py-2 text-sm font-medium hover:bg-blk/15 hover:text-bone">Beranda</a>
-           <a href="/bilik" wire:navigate class="text-bone/10 px-3 py-2 text-sm font-medium hover:bg-blk/15 hover:text-bone">Bilik Suara</a>
-           <a href="/kandidat" wire:navigate class="text-bone/10 px-3 py-2 text-sm font-medium hover:bg-blk/15 hover:text-bone">Kandidat</a>
-           <a href="/berita" wire:navigate class="text-bone/10 px-3 py-2 text-sm font-medium hover:bg-blk/15 hover:text-bone">Berita</a>
+        <li class="flext items-center justify-center gap-5 mr-5">
+           <a href="/home" wire:navigate class="text-bone px-3 py-2 text-m font-medium hover:bg-blk/15 hover:text-bone">Beranda</a>
+           <a href="/main/ilik" wire:navigate class="text-bone px-3 py-2 text-m font-medium hover:bg-blk/15 hover:text-bone">Bilik Suara</a>
+           <a href="/main/kandidat" wire:navigate class="text-bone px-3 py-2 text-m font-medium hover:bg-blk/15 hover:text-bone">Kandidat</a>
+           <a href="/main/berita" wire:navigate class="text-bone px-3 py-2 text-m font-medium hover:bg-blk/15 hover:text-bone">Berita</a>
         </li>
     @endauth
 
