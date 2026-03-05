@@ -13,18 +13,6 @@ class CandidateForm
     {
         return $schema
             ->components([
-                Section::make('Idenditas Paslon')
-                    ->schema([
-                        TextInput::make('nomor')
-                            ->label('Nomor Urut')
-                            ->required()
-                            ->integer()
-                            ->minValue(1)
-                            ->unique(ignoreRecord: true)
-                            ->placeholder('Contoh: 1')
-                    ])
-                    ->columns(1),
-
                 // ── Ketua ──
                 Section::make('Calon Ketua')
                     ->schema([
@@ -40,8 +28,10 @@ class CandidateForm
                             ->image()
                             ->imageEditor()
                             ->visibility('public')
+                            ->directory('candidates/photos')
+                            ->preserveFilenames()
+                            ->disk('public')
                             ->nullable()
-                            // ->directory()
                     ])
                     ->columns(2),
 
@@ -60,8 +50,10 @@ class CandidateForm
                             ->image()
                             ->imageEditor()
                             ->visibility('public')
+                            ->directory('candidates/photos')
+                            ->preserveFilenames()
+                            ->disk('public')
                             ->nullable()
-                            // ->directory()
                     ])
                     ->columns(2),
 
@@ -71,26 +63,34 @@ class CandidateForm
                         TextInput::make('visi')
                             ->label('Visi')
                             ->required()
-                            ->rows(3)
                             ->maxLength(400),
                         TextInput::make('misi')
                             ->label('Misi')
                             ->required()
-                            ->rows(5)
                             ->helperText('Pisahkan setiap poin dengan baris baru')
                             ->maxLength(1200),
-                        TextInput::make('Program')
+                        TextInput::make('program')
                             ->label('Program Kerja')
                             ->required()
-                            ->rows(5)
                             ->maxLength(2000)
                             ->helperText('Pisahkan setiap program dengan baris baru'),
-                        TextInput::make('vision_mission_image')
+                        FileUpload::make('vision_mission_image')
                             ->label('Gambar Visi Misi (opsional)')
                             ->image()
                             ->visibility('public')
                             ->nullable()
-                            // ->directory('')
+                            ->disk('public')
+                            ->directory('candidates/poster')
+                    ]),
+                Section::make('Identitas Paslon')
+                    ->schema([
+                        TextInput::make('nomor')
+                            ->label('Nomor Urut')
+                            ->required()
+                            ->integer()
+                            ->minValue(1)
+                            ->unique(ignoreRecord: true)
+                            ->placeholder('Contoh: 1')
                     ])
 ,            ]);
     }
