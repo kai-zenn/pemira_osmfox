@@ -14,7 +14,7 @@ return new class extends Migration
     {
         Schema::create('candidates', function (Blueprint $table) {
             $table->id()->primary();
-            $table->integer('number');
+            // $table->unsignedBigInteger('election_period_id')->nullable();
             $table->integer('nomor');
             $table->string('nama_ketua');
             $table->string('kelas_ketua');
@@ -23,8 +23,9 @@ return new class extends Migration
             $table->text('visi');
             $table->text('misi');
             $table->text('program');
-            $table->string('vision_mission_image');
-            $table->string('photo_path');
+            $table->string('vision_mission_image')->nullable();
+            $table->string('photo_ketua')->nullable();
+            $table->string('photo_wakil')->nullable();
             $table->timestamps();
             $table->SoftDeletes();
         });
