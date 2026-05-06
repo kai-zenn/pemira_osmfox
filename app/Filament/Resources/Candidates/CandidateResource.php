@@ -22,7 +22,7 @@ class CandidateResource extends Resource
     protected static string|BackedEnum|null $navigationIcon = 'heroicon-o-user-group';
 
     protected static ?string $recordTitleAttribute = 'Candidate';
-    
+
     protected static ?string $navigationLabel = 'Kandidat';
     protected static ?string $modelLabel = 'Kandidat';
 
@@ -48,6 +48,7 @@ class CandidateResource extends Resource
             //
         ];
     }
+    
 
     public static function getPages(): array
     {

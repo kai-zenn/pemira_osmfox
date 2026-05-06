@@ -8,6 +8,7 @@ use Filament\Actions\DeleteAction;
 use Filament\Actions\DeleteBulkAction;
 use Filament\Actions\EditAction;
 use Filament\Actions\RestoreAction;
+use Filament\Forms\Components\Textarea;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Columns\ImageColumn;
 use Filament\Tables\Table;
@@ -22,7 +23,7 @@ class CandidatesTable
                     ->label('No.')
                     ->sortable()
                     ->badge(),
-                ImageColumn::make('photo_path')
+                ImageColumn::make('photo_ketua')
                     ->label('Foto')
                     ->circular()
                     ->disk('public')
@@ -50,13 +51,18 @@ class CandidatesTable
                     ->badge(),
                 TextColumn::make('visi')
                     ->label('Visi')
-                    ->limit(60)
+                    ->maxLength(180)
                     ->tooltip(fn (Candidate $r): string => $r->visi),
-                TextColumn::make('misi')
-                    // ->label('Misi')
+                Textarea::make('misi')
+                    ->label('Misi')
+                    ->required()
+                    ->row(5)
+                    ->maxLength(1200)
                     ->toggleable(isToggledHiddenByDefault: true),
-                TextColumn::make('program')
-                    // ->label('Misi')
+                Textarea::make('program')
+                    ->label('Program Kerja')
+                    ->rows(5)
+                    ->maxLength(1200)
                     ->toggleable(isToggledHiddenByDefault: true)
             ])
             ->defaultSort('nomor')
